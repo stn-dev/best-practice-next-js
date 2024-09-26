@@ -1,0 +1,24 @@
+{
+  "articles": [
+    {
+      "id": "2",
+      "title": "article deux",
+      "price": "100£"
+    },
+    {
+      "id": "483",
+      "title": "article quatre",
+      "price": "126£"
+    },
+    {
+      "id": "161",
+      "title": "article cinaue",
+      "price": "250£"
+    },
+    {
+      "id": "95",
+      "title": "article un",
+      "price": "650£"
+    }
+  ]
+}
