@@ -1,3 +1,4 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
 import React from 'react'
 
@@ -18,6 +19,11 @@ type Articletype = {
     id: number;
     title: string;
     price: string
+}
+
+export const metadata: Metadata = {
+    title: "articles",
+    description: "find all article in this page"
 }
 
 export default async function page({ }: Props) {
