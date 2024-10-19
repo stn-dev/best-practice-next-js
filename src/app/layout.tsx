@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "./globals.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | practice next app"
   },
 
-  // this is de little description after the title
+  // this is the little description after the title
   description: "Try to understand next js with all his features",
 
   // openGraph define the looks of your web-site in social media link

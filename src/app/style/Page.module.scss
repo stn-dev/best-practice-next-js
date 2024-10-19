@@ -1,0 +1,13 @@
+.homePage {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(255, 255, 199);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        font-size: 30px;
+        font-weight: bolder;
+    }
+}

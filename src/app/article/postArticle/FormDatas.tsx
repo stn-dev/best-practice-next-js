@@ -1,7 +1,8 @@
 "use client"
 
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useRef } from 'react'
+// import { handler } from '@/app/api/article/route'
 
 type Datatype = {
     title: string,
@@ -9,7 +10,10 @@ type Datatype = {
 }
 
 function formData() {
+
     // const router = useRouter()
+
+    const ref = useRef<HTMLFormElement>(null)
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -23,15 +27,17 @@ function formData() {
                 "content-type": "application/json"
             },
             body: JSON.stringify({
-                id: Math.floor(Math.random() * 500).toString(),
                 title: data.title,
                 price: data.price
             })
         })
+
+        ref.current?.reset()
+
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} ref={ref}>
             <input type="text" name='title' placeholder='title' />
             <input type="text" name='price' placeholder='price' />
             <button>submit</button>

@@ -1,33 +1,110 @@
+import { deleteArticle, updateArticle } from "@/db/Article/mongoCrud"
+import { ObjectId } from "mongodb"
 import { NextResponse } from "next/server"
 
 type RouteParams = {
     params : {
-        id: number
+        id: string
     }
 }
 
-const getOneArticle = async (id: number) => {
-    const res = await fetch(`http://localhost:4000/articles/${id}`)
-    const data = await res.json()
+export async function DELETE(req : Request , {params}:RouteParams) {
+    
+    console.log("delete")
 
-    return data
+    if(req.method !== "DELETE") {
+        return NextResponse.json(
+            {error : "method not alowed"},
+            {status : 405}
+        )
+    }
+
+    if(!process.env.MONGODB_URI) {
+
+       return  NextResponse.json(
+            {error : "DATABASE_URL not existing"},
+            {status: 500 }
+        )
+    }
+
+    if(!params.id || !ObjectId.isValid(params.id)) {
+        return NextResponse.json(
+            {message : "ID not valie"},
+            {status : 400}
+        )
+    }
+
+    try {
+
+        const result = await deleteArticle(params.id)
+
+        if(result.deletedCount === 0) {
+            return NextResponse.json(
+                {message : "article not found"},
+                {status : 404}
+            )
+        }
+
+        return NextResponse.json(
+            {message : "article deleted"} ,
+            {status : 200}
+        )
+
+    } catch (error) {
+        console.log(error)
+
+        return NextResponse.json(
+            {error : "server error"},
+            {status : 500}
+        )
+    }
+
 }
 
-// GET
-export async function GET (req: Request , {params}:RouteParams) {
-    const data = await getOneArticle(params.id)
-    console.log(data)
-    return NextResponse.json(data)
-}
 
-// DELETE
-export async function DELETE(req:Request , {params}:RouteParams) {
+export const PUT = async ( req : Request ,{params} : RouteParams) => {
 
-    fetch(`http://localhost:4000/articles/${params.id}` , {
-        method :"DELETE"
-    })
+    if(!process.env.MONGODB_URI) {
+        NextResponse.json(
+            {error : "DATABASE_URL not existing"},
+            {status: 500 }
+        )
+    }
 
-    return NextResponse.json({
-        message : "article deleted succesfully"
-    })
+    if(!ObjectId.isValid(params.id)) {
+        return NextResponse.json({
+            error : "ID is invalid"
+        })
+    }
+
+    try {
+
+        const {title , price} = await req.json()
+
+        const data = await updateArticle(params.id , title , price)
+
+        if(data.matchedCount === 0) {
+            return NextResponse.json(
+                {error : "data not found"},
+                {status : 404}
+            )
+        }
+
+        return NextResponse.json(
+            {
+                data,
+                message : "article updated succesfully"
+            } ,
+            {status : 200},
+
+        )
+
+    } catch (error) {
+        console.log(error)
+
+        return NextResponse.json(
+            {error : "server error"},
+            {status : 500}
+        )
+    }
 }

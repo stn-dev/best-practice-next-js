@@ -1,10 +1,15 @@
+import style from './connexion.module.scss'
 import React from 'react'
 
 type Props = {}
 
 function page({ }: Props) {
     return (
-        <div>connexion with google</div>
+        <>
+            <div className={style.container} >
+                <h1>connexion with google</h1>
+            </div>
+        </>
     )
 }
 
