@@ -1,0 +1,21 @@
+%flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  $dark : rgb(0, 0, 23);
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: $dark;
+    @extend %flex;
+    flex-direction: column;
+    gap: 50px;
+
+    h1 {
+        font-size: 40px;
+        font-weight: bolder;
+    }
+}

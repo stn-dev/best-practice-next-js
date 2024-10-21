@@ -1,7 +1,8 @@
 import React from 'react'
+import style from './articleId.module.scss'
 import { Metadata } from 'next';
 import { DeleteBtn } from '@/app/components/(BUTTON)/Button/DeleteBtn/page';
-import { deleteArticle, getOneArticle } from '@/db/Article/mongoCrud';
+import { getOneArticle } from '@/db/Article/mongoCrud';
 import UpdateArticle from '@/app/components/(form)/UpdateArticle/page';
 
 type Props = {
@@ -43,16 +44,37 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata | un
 export default async function page({ params }: Props) {
 
     const data = await getOneArticle(params.id)
-
     return (
-        <div>
-            <h4> you can buy the {data?.title} </h4>
-            <p> the price is {data?.price} </p>
-            <br />
-            <DeleteBtn params={params} />
-            <br />
-            <UpdateArticle defaultTitle={data?.title} defautlPrice={data?.price} params={params} />
-        </div>
+        <>
+            <div className={style.container} >
+
+                <h1>{data?.title}</h1>
+
+                <div className={style.article} >
+
+                    <p> Are you intersted in the
+                        <span>
+                            {data?.title}
+                        </span> ?
+                    </p>
+
+                    <p> You can buy it for
+                        <span>
+                            {data?.price}
+                        </span>
+                    </p>
+
+                    <DeleteBtn params={params} />
+                </div>
+
+                <hr />
+
+                <div>
+                    <UpdateArticle defaultTitle={data?.title} defautlPrice={data?.price} params={params} />
+                </div>
+
+            </div>
+        </>
     )
 
 }

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+$dark : rgb(0, 0, 23);
+
 * {
   margin: 0;
   padding: 0;
@@ -9,12 +11,17 @@
   font-family: sans-serif;
   list-style: none;
   text-decoration: none;
+  color: white;
 }
 
 %flex {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+body {
+  overflow-x: hidden; 
 }
 
 .template {
@@ -24,9 +31,14 @@
 .navbar {
   width: 100vw;
   height: 60px;
-  background-color: gold;
+  background-color: $dark;
+  color: blue;
   @extend %flex;
   justify-content: space-around;
+  position: fixed;
+  box-shadow: 8px 0 10px 5px rgba(0, 0, 255, 0.502);
+  top: 0;
+  left: 0;
 }
 
 .banner-container {
@@ -36,13 +48,14 @@
   top: 0;
   left: 0;
   background-color: transparent;
+  overflow-x: hidden;
   .banner {
     position: absolute;
     bottom: 0;
     height: 100%;
     width: 20%;
-    background-color: black;
-    border: 1px solid white;
+    background-image: linear-gradient(rgb(0, 0, 222),rgb(0, 0, 83));
+    // opacity: 0.75;
   }
   .one {
     left: 0;

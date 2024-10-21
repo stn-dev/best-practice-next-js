@@ -1,6 +1,6 @@
 'use client'
 
-
+import style from './deleteBtn.module.scss'
 import React from "react"
 
 type Idtype = {
@@ -11,25 +11,33 @@ type Idtype = {
 
 export const DeleteBtn = ({ params }: Idtype) => {
 
+
+
     const deleteArticleById = async () => {
 
-        const res = await fetch(`http://localhost:3000/api/article/${params.id}`, {
-            method: "DELETE"
-        })
+        const conf = confirm("Are you sure to delete this article")
 
-        const data = await res.json()
+        if (conf) {
+            const res = await fetch(`http://localhost:3000/api/article/${params.id}`, {
+                method: "DELETE"
+            })
 
-        console.log(data)
+            const data = await res.json()
 
-        return
+            console.log(data)
+
+            return
+        } else {
+            return
+        }
 
     }
 
     return (
         <button
             onClick={deleteArticleById}
-            className="rounded shadow-xl bg-blue-200 p-1 :hover-bg-blue-400 text-bold text-lg" >
-            delete
+            className={style.deleteButton} >
+            Delete
         </button>
     )
 }

@@ -1,4 +1,4 @@
-
+import style from './updateArticle.module.scss'
 import React, { useRef } from 'react'
 
 type Props = {
@@ -30,18 +30,33 @@ export default async function UpdateArticle({ params, defaultTitle, defautlPrice
                 price
             })
         })
+            .catch((err) => console.log(err))
+            .then(() => alert("article updated"))
 
         return
     }
 
     return (
-        <div>
+        <div className={style.container} >
             <h2>update your article</h2>
 
-            <form action={handleUpdate}>
-                <input type="text" placeholder='new title' name='title' defaultValue={defaultTitle} />
+            <form
+                action={handleUpdate}
+                className={style.form}
+            >
+                <input
+                    type="text"
+                    placeholder='new title'
+                    name='title'
+                    defaultValue={defaultTitle}
+                />
                 <br />
-                <input type="text" placeholder='new price' name='price' defaultValue={defautlPrice} />
+                <input
+                    type="text"
+                    placeholder='new price'
+                    name='price'
+                    defaultValue={defautlPrice}
+                />
                 <br />
                 <button>save</button>
             </form>
