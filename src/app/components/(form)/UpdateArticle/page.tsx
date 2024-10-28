@@ -1,5 +1,10 @@
+// "use client"
+
 import style from './updateArticle.module.scss'
 import React, { useRef } from 'react'
+import { useRouter } from 'next/navigation'
+import { updateArticle } from '@/db/Article/mongoCrud'
+import { revalidatePath } from 'next/cache'
 
 type Props = {
     params: {
@@ -11,29 +16,16 @@ type Props = {
 
 export default async function UpdateArticle({ params, defaultTitle, defautlPrice }: Props) {
 
-    const handleUpdate = async (formdata: FormData) => {
-        "use server"
-        console.log("server action")
-        const title = formdata.get("title") as string
-        const price = formdata.get("price") as string
+    const handleUpdate = async (formData: FormData) => {
 
-        await fetch(`http://localhost:3000/api/article/${params.id}`, {
-            next: {
-                revalidate: 0
-            },
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                title,
-                price
-            })
-        })
-            .catch((err) => console.log(err))
-            .then(() => alert("article updated"))
+        'use server'
 
-        return
+        const title = formData.get('title') as string
+        const price = formData.get('price') as string
+
+        await updateArticle(params.id, title, price)
+
+        return revalidatePath(`/article/${params.id}`)
     }
 
     return (

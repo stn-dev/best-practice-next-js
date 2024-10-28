@@ -1,0 +1,44 @@
+%flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.template {
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+
+    .navigation {
+        width: 100vw;
+        height: fit-content;
+        @extend %flex;
+        justify-content: space-around;
+        position: absolute;
+        gap: 2px;
+        top: 70px;
+        left: 0;
+        z-index: 10;
+    
+        button {
+            width: 50%;
+            height: fit-content;
+            padding: 20px 0;
+            @extend %flex;
+            border: none;
+            border-radius: 0;
+            background-color: rgb(154, 154, 255);
+            color: white;
+
+            &:hover {
+                background-color: rgb(124, 124, 255);
+            }
+
+            &:focus {
+                background-color: rgb(124, 124, 255);;
+            }
+        }
+    }
+}

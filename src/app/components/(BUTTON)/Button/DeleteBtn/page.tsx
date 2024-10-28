@@ -1,5 +1,6 @@
 'use client'
 
+import { redirect, useRouter } from 'next/navigation'
 import style from './deleteBtn.module.scss'
 import React from "react"
 
@@ -11,7 +12,7 @@ type Idtype = {
 
 export const DeleteBtn = ({ params }: Idtype) => {
 
-
+    const router = useRouter()
 
     const deleteArticleById = async () => {
 
@@ -26,7 +27,8 @@ export const DeleteBtn = ({ params }: Idtype) => {
 
             console.log(data)
 
-            return
+            return router.push("/article")
+
         } else {
             return
         }

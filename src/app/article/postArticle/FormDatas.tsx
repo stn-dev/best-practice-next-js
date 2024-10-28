@@ -1,8 +1,10 @@
-"use client"
 
-import { useRouter } from 'next/navigation'
+import { postArticle } from '@/db/Article/mongoCrud'
 import style from './FormDatas.module.scss'
 import React, { useRef } from 'react'
+import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
+import { InsertManyResult } from 'mongodb'
 
 type Datatype = {
     title: string,
@@ -11,36 +13,22 @@ type Datatype = {
 
 function formData() {
 
-    // const router = useRouter()
+    const handleSubmit = async (formData: FormData) => {
 
-    const ref = useRef<HTMLFormElement>(null)
-    const router = useRouter()
+        'use server'
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        const title = formData.get('title') as string
+        const price = formData.get("price") as string
 
-        e.preventDefault()
+        if (title && price) {
 
-        const formData = new FormData(e.currentTarget)
-        const data = Object.fromEntries(formData.entries())
-        console.log(data)
+            const result = await postArticle(title, price)
 
-        if (data.title && data.price) {
+            console.log(result)
 
-            fetch("http://localhost:3000/api/article", {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify({
-                    title: data.title,
-                    price: data.price
-                })
-            })
-                .then(() => alert('new article posted'))
-                .catch((err) => console.log(err))
+            revalidatePath("/article")
 
-            ref.current?.reset()
-            router.push("/article")
+            return redirect("/article")
 
         } else {
             alert("Missing raquired field")
@@ -50,8 +38,7 @@ function formData() {
 
     return (
         <form
-            onSubmit={handleSubmit}
-            ref={ref}
+            action={handleSubmit}
             className={style.form}
         >
             <input

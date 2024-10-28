@@ -28,7 +28,7 @@ export async function POST (req : Request) {
 
     return NextResponse.json(
         {
-            ...data,
+            data,
             message : "Article created succefully"
         },
         {status : 201}

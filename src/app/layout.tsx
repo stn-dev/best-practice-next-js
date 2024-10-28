@@ -34,7 +34,8 @@ export const metadata: Metadata = {
     url: "http://localhost:3000/",
 
     //name of the site
-    siteName: "stn-dev"
+    siteName: "stn-dev",
+    // images : "src/app/opengraph-image.jpg"
   }
 };
 

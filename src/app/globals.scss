@@ -39,6 +39,7 @@ body {
   box-shadow: 8px 0 10px 5px rgba(0, 0, 255, 0.502);
   top: 0;
   left: 0;
+  z-index: 20;
 }
 
 .banner-container {
@@ -49,13 +50,13 @@ body {
   left: 0;
   background-color: transparent;
   overflow-x: hidden;
+  z-index: 1000;
   .banner {
     position: absolute;
     bottom: 0;
     height: 100%;
     width: 20%;
-    background-image: linear-gradient(rgb(0, 0, 222),rgb(0, 0, 83));
-    // opacity: 0.75;
+    background-image: linear-gradient(rgb(0, 0, 161),rgb(0, 0, 44));
   }
   .one {
     left: 0;

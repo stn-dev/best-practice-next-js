@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import React from 'react'
 import TransitionLink from '../components/link/transitionLink';
 import style from './article.module.scss'
+import { revalidatePath } from 'next/cache';
 
 type Props = {}
 
@@ -27,11 +28,13 @@ export const metadata: Metadata = {
 }
 
 export default async function page({ }: Props) {
+    revalidatePath("/article")
     const { data } = await getArticle()
     console.log(data)
     return (
         <>
             <div className={style.container} >
+
                 <h2>ALL ARTICLES LIST</h2>
                 <ul className={style.listContainer} >
                     {
@@ -45,10 +48,6 @@ export default async function page({ }: Props) {
                     }
                 </ul>
                 <br />
-                <TransitionLink
-                    href="/article/postArticle"
-                    label='post article'
-                />
             </div>
         </>
     )

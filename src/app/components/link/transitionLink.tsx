@@ -17,6 +17,12 @@ function TransitionLink({ href, label }: Props) {
 
     let active = false
 
+    if (pathname.includes("article") && href.includes("article")) {
+        active = true
+    }
+
+
+
     if (pathname === href) {
         active = true
     }
@@ -32,7 +38,9 @@ function TransitionLink({ href, label }: Props) {
             onClick={handleClick}
             className={active ? style.btnActive : style.linkButton}
         >
+
             {label}
+
         </button>
 
     )
