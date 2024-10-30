@@ -25,8 +25,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
                         label="article"
                     />
                     <TransitionLink
-                        href="/dashboard"
-                        label="dashboard"
+                        href="/user"
+                        label="users"
                     />
                     <TransitionLink
                         href="/connexion"

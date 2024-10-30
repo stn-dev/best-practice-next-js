@@ -50,7 +50,7 @@ export const updateUser = async (name : string , age : number , genres : "male" 
     .updateOne(
         {_id : new ObjectId(id)},
         {
-            name, age, genres, image
+            name, age, genres, image : image || null
         }
     )
 

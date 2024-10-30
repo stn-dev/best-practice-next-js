@@ -21,6 +21,10 @@ function TransitionLink({ href, label }: Props) {
         active = true
     }
 
+    if (pathname.includes("user") && href.includes("user")) {
+        active = true
+    }
+
 
 
     if (pathname === href) {
