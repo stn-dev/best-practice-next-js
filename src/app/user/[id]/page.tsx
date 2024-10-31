@@ -1,7 +1,8 @@
 import React from 'react'
 import style from './uniqueUser.module.scss'
-import { IUserType } from '@/db/Types/type'
 import { getOneUser } from '@/db/User/userSevice'
+import DeleteUserBtn from '@/app/components/(BUTTON)/Button/DeleteUserBtn/DeleteUserBtn'
+import GoBack from '@/app/components/goBack/goBack'
 
 type userId = {
     params: { id: string }
@@ -14,6 +15,9 @@ const uniqueUser = async ({ params }: userId) => {
 
     return (
         <div className={style.container}>
+
+            <GoBack />
+
             <div className={style.user} >
 
                 <img src="" alt="user picture" />
@@ -26,7 +30,7 @@ const uniqueUser = async ({ params }: userId) => {
 
                     <div className={style.btnContainer} >
 
-                        <button className={style.deleteBtn} >DELETE</button>
+                        <DeleteUserBtn params={params} />
                         <button className={style.updateBtn}>UPDATE</button>
 
                     </div>

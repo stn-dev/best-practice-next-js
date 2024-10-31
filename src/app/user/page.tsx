@@ -4,12 +4,18 @@ import { IUserType } from '@/db/Types/type'
 import TransitionLink from '../components/link/transitionLink'
 
 export const getAllUser = async (): Promise<IUserType[] | undefined> => {
+
     try {
-        const res = await fetch("http://localhost:3000/api/user")
+        const res = await fetch("http://localhost:3000/api/user", {
+            next: {
+                revalidate: 0
+            }
+        })
         const users = await res.json()
         console.log(users)
 
         return users.data
+
     } catch (error) {
         console.log(error)
     }
@@ -22,6 +28,12 @@ const page = async () => {
     return (
         <>
             <div className={style.container} >
+
+                <div className={style.addBtn} >
+                    <p>add new user</p>
+                    <TransitionLink href={`user/postUser`} label='+' />
+                </div>
+
                 <h1>All the users</h1>
 
                 <div
@@ -44,6 +56,7 @@ const page = async () => {
                         ))
                     }
                 </div>
+
             </div>
         </>
     )

@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './page;.module.scss'
-import FormDatas from './FormDatas'
+import FormDatas from './Form/FormDatas'
 
 type Props = {}
 

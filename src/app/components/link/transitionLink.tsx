@@ -25,6 +25,8 @@ function TransitionLink({ href, label }: Props) {
         active = true
     }
 
+    if (href === "/user/postUser") active = false
+
 
 
     if (pathname === href) {
