@@ -1,0 +1,78 @@
+.container .formUser, .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 60%;
+  min-height: 400px;
+  color: white;
+  background-color: rgb(0, 0, 23);
+  padding: 30px;
+  background-image: linear-gradient(rgb(194, 194, 255), rgb(0, 0, 170));
+  position: relative;
+}
+.container .formUser {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 20px;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(0, 0, 23);
+}
+.container .formUser input {
+  width: min(30vw, 350px);
+  height: 50px;
+  outline: none;
+  border: 2px solid blue;
+  background-color: rgb(0, 0, 23);
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: normal;
+  color: rgb(219, 219, 255);
+  transition: all 0.2s;
+}
+.container .formUser input::-moz-placeholder {
+  color: rgba(0, 0, 255, 0.651);
+  font-size: 16px;
+}
+.container .formUser input::placeholder {
+  color: rgba(0, 0, 255, 0.651);
+  font-size: 16px;
+}
+.container .formUser input:focus {
+  box-shadow: 0 0 10px 8px rgba(0, 0, 255, 0.438);
+}
+.container .formUser select {
+  width: min(30vw, 350px);
+  height: 50px;
+  outline: none;
+  border: 2px solid blue;
+  background-color: rgb(0, 0, 23);
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: normal;
+  color: rgb(219, 219, 255);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.container .formUser select:focus {
+  box-shadow: 0 0 10px 8px rgba(0, 0, 255, 0.438);
+}
+.container .formUser button {
+  width: min(30vw, 350px);
+  min-height: 50px;
+  background-color: blue;
+  color: white;
+  font-size: 16px;
+  font-weight: normal;
+  padding: 16px 32px;
+  transition: all 0.2s ease-in-out;
+}
+.container .formUser button:hover {
+  background-color: rgb(0, 0, 190);
+}/*# sourceMappingURL=userForm.module.css.map */

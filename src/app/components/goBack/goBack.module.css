@@ -1,0 +1,16 @@
+.container {
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 20px;
+  border-radius: 100%;
+  border: none;
+  background-color: rgb(206, 206, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=goBack.module.css.map */

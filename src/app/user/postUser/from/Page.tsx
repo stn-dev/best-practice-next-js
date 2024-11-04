@@ -34,6 +34,7 @@ function UserForm() {
             if (res.ok) {
                 alert("user posted")
 
+                router.refresh()
                 router.push("/user")
             } else {
                 alert("error when post user")

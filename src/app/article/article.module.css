@@ -1,0 +1,69 @@
+.container .listContainer li button, .container .listContainer, .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(0, 0, 23);
+  flex-direction: column;
+  gap: 15px;
+  overflow-x: hidden;
+  margin-top: 50px;
+  position: relative;
+}
+.container h2 {
+  font-size: 30px;
+  font-weight: bolder;
+  color: rgb(234, 234, 255);
+}
+.container button {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 16px 32px;
+  color: white;
+  background-color: rgb(0, 0, 207);
+  font-size: 16px;
+  border: 1px solid white;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+.container button:hover {
+  background-color: rgb(0, 0, 148);
+}
+.container .listContainer {
+  width: 60%;
+  min-height: 300px;
+  background-image: linear-gradient(rgb(0, 0, 208), rgb(0, 0, 65));
+  border: none;
+  border-radius: 20px;
+  padding: 20px;
+  flex-direction: column;
+  gap: 10px;
+}
+.container .listContainer li {
+  width: 100%;
+  height: 70px;
+  background-color: rgb(255, 255, 244);
+  border: 2px solid white;
+  border-radius: 10px;
+}
+.container .listContainer li button {
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  flex-direction: column;
+  align-items: start;
+  font-size: 16px;
+  font-weight: normal;
+  color: rgb(66, 66, 0);
+  background-color: rgb(234, 234, 255);
+  transition: all 0.2s;
+}
+.container .listContainer li button:hover {
+  background-color: rgb(214, 214, 255);
+}/*# sourceMappingURL=article.module.css.map */

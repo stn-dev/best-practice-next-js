@@ -2,6 +2,7 @@ import React from 'react'
 import style from './user.module.scss'
 import { IUserType } from '@/db/Types/type'
 import TransitionLink from '../components/link/transitionLink'
+import { revalidatePath } from 'next/cache'
 
 export const getAllUser = async (): Promise<IUserType[] | undefined> => {
 
@@ -22,6 +23,8 @@ export const getAllUser = async (): Promise<IUserType[] | undefined> => {
 }
 
 const page = async () => {
+
+    revalidatePath("/user")
 
     const users = await getAllUser()
 

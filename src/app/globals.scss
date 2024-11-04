@@ -40,6 +40,37 @@ body {
   top: 0;
   left: 0;
   z-index: 20;
+
+  .links {
+    width: 50%;
+    height: 100%;
+    padding: 0 20px;
+    @extend %flex;
+    justify-content: space-between;
+  }
+
+  .button-links {
+    width: 50%;
+    height: 100%;
+    padding: 0  50px; 
+    @extend %flex;
+    justify-content: flex-end;
+    gap: 20px;
+
+    &:nth-child(1) {
+      background-color: transparent;
+      border: 2px solid blue;
+    }
+
+    button {
+      width: fit-content;
+      height: fit-content;
+      padding: 16px 32px;
+      font-weight: bolder;
+      background-color: rgb(0, 0, 210);
+      color: white;
+    }
+  }
 }
 
 .banner-container {

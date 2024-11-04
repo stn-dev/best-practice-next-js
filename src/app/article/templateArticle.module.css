@@ -1,0 +1,39 @@
+.template .navigation button, .template .navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.template {
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+.template .navigation {
+  width: 100vw;
+  height: -moz-fit-content;
+  height: fit-content;
+  justify-content: space-around;
+  position: absolute;
+  gap: 2px;
+  top: 70px;
+  left: 0;
+  z-index: 10;
+}
+.template .navigation button {
+  width: 50%;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 20px 0;
+  border: none;
+  border-radius: 0;
+  background-color: rgb(154, 154, 255);
+  color: white;
+}
+.template .navigation button:hover {
+  background-color: rgb(124, 124, 255);
+}
+.template .navigation button:focus {
+  background-color: rgb(124, 124, 255);
+}/*# sourceMappingURL=templateArticle.module.css.map */

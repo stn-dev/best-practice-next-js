@@ -16,26 +16,25 @@ export default function Template({ children }: { children: React.ReactNode }) {
         <section className='template' >
             <header>
                 <nav className="navbar" >
-                    <TransitionLink
-                        href="/"
-                        label="home"
-                    />
-                    <TransitionLink
-                        href="/article"
-                        label="article"
-                    />
-                    <TransitionLink
-                        href="/user"
-                        label="users"
-                    />
-                    <TransitionLink
-                        href="/connexion"
-                        label="connexion"
-                    />
-                    {/* <TransitionLink
-                        href="/inscription"
-                        label="inscription"
-                    /> */}
+
+                    <div className="links">
+                        <TransitionLink
+                            href="/"
+                            label="home"
+                        />
+                        <TransitionLink
+                            href="/article"
+                            label="article"
+                        />
+                        <TransitionLink
+                            href="/user"
+                            label="users"
+                        />
+                    </div>
+                    <div className="button-links">
+                        <button>Sing up</button>
+                        <button>Login</button>
+                    </div>
                 </nav>
             </header>
 
