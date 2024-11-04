@@ -25,7 +25,7 @@ export const getOneUser = async (id : string) => {
     return user
 }
 
-export const createUser = async (name : string , age : number , genres : "male" | "female" , image : File) => {
+export const createUser = async (name : string , email : string , genres : "male" | "female" , image : File , password : number | string) => {
     const myDb = await mongoClient
 
     const newUser = myDb
@@ -33,15 +33,16 @@ export const createUser = async (name : string , age : number , genres : "male" 
     .collection<IUserType>("users")
     .insertOne({
         name,
-        age,
+        email,
         genres,
-        image : image || null
+        image : image || null,
+        password
     })
 
     return newUser
 }
 
-export const updateUser = async (name : string , age : number , genres : "male" | "female" , image : File, id : string) => {
+export const updateUser = async (name : string , email : string , genres : "male" | "female" , image : File , password : number | string, id : string) => {
     const myDb = await mongoClient
 
     const userToUpdate = myDb
@@ -50,7 +51,7 @@ export const updateUser = async (name : string , age : number , genres : "male" 
     .updateOne(
         {_id : new ObjectId(id)},
         {
-            name, age, genres, image : image || null
+            name, email, genres, image : image || null, password
         }
     )
 
@@ -66,4 +67,15 @@ export const deleteUser = async (id : string) => {
     .deleteOne({_id : new ObjectId(id)})
 
     return deletedUser
+}
+
+export const getOneUserByEmail = async (email : string) => {
+    const myDb = await mongoClient
+
+    const user = myDb
+    .db("next-js-practice")
+    .collection("users")
+    .findOne({email : email})
+
+    return user
 }

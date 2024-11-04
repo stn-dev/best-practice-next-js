@@ -7,8 +7,9 @@ export interface IDataType {
 
 export interface IUserType {
     name : string,
-    age : number,
+    email : string,
     genres : "male" | "female",
     image ? : File | null,
-    _id? : ObjectId
+    _id? : ObjectId,
+    password : number | string
 }

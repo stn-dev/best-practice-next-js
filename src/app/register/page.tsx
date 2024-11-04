@@ -11,12 +11,10 @@ function page({ }: Props) {
     return (
         <div className={style.container} >
             <h1>
-                Add new user
+                Register
             </h1>
 
             <UserForm />
-
-            <GoBack />
 
         </div>
     )

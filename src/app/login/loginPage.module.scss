@@ -1,0 +1,24 @@
+%flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  $dark : rgb(0, 0, 23);
+
+.container {
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: white;
+    background-color: $dark;
+    @extend %flex;
+    flex-direction: column;
+    gap: 20px;
+
+
+    h1 {
+        font-size: 30px;
+        font-weight: bold;
+    }
+}

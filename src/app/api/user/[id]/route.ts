@@ -1,4 +1,4 @@
-import { deleteUser, updateUser } from '@/db/User/userSevice';
+import { deleteUser, getOneUserByEmail, updateUser } from '@/db/User/userSevice';
 import { NextResponse } from 'next/server';
 
 type IdType = {
@@ -54,9 +54,24 @@ export const PUT = async (req : Request , {params} : IdType) => {
 
     try {
 
-        const {name , age , genres , image} = await req.json()
+        const {name , email , genres , image , password} = await req.json()
 
-        await updateUser(name , age , genres , image , params.id)
+        const aleadyExist = await getOneUserByEmail(email)
+
+        if(aleadyExist) {
+
+            alert("This eamil already exist\n please use another one or your last email")
+
+            return NextResponse.json(
+                {
+                    ok : false , 
+                    message : "This eamil aleady exist, please use another one"
+                } ,
+                {status : 400}
+            )
+        }
+
+        await updateUser(name , email , genres , image , password , params.id )
 
         return NextResponse.json(
             {

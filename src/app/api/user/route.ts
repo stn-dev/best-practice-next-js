@@ -1,6 +1,4 @@
-// import { IUserType } from './../../../db/Types/type';
-// import { IUserType } from "@/db/Types/type"
-import { createUser, getAllUsers } from "@/db/User/userSevice"
+import { createUser, getAllUsers,  getOneUserByEmail } from "@/db/User/userSevice"
 import { NextResponse } from "next/server"
 
 
@@ -63,15 +61,30 @@ export const POST = async (req : Request) => {
 
     try {
 
-        const {name , age , genres , image}  = await  req.json();
+        const {name , email , genres , image , password}  = await  req.json();
 
-        await createUser(name , age, genres , image)
+        const aleadyExist = await getOneUserByEmail(email)
+
+        if(aleadyExist) {
+
+            alert("This eamil already exist\n please use another one")
+
+            return NextResponse.json(
+                {
+                    ok : false , 
+                    message : "This eamil aleady exist, please use another one"
+                } ,
+                {status : 400}
+            )
+        }
+
+        await createUser(name , email, genres , image , password)
 
         return NextResponse.json(
             {
                 ok : true,
                 data : {
-                    name , age , genres, image
+                    name , email , genres, image , password
                 }
             },
             {status : 200}

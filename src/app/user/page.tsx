@@ -32,11 +32,6 @@ const page = async () => {
         <>
             <div className={style.container} >
 
-                <div className={style.addBtn} >
-                    <p>add new user</p>
-                    <TransitionLink href={`user/postUser`} label='+' />
-                </div>
-
                 <h1>All the users</h1>
 
                 <div

@@ -15,9 +15,10 @@ function UserForm() {
         const formData = new FormData(e.currentTarget)
 
         const name = formData.get('name')
-        const age = formData.get("age")
+        const email = formData.get("email")
         const genres = formData.get("genres")
         const file = formData.get('image')
+        const password = formData.get('password')
 
         console.log(file)
 
@@ -27,7 +28,7 @@ function UserForm() {
                 headers: {
                     "content-Type": "application/json"
                 },
-                body: JSON.stringify({ name, age, genres, file })
+                body: JSON.stringify({ name, email, genres, file, password })
             }
             )
 
@@ -60,15 +61,15 @@ function UserForm() {
                 />
                 <br />
                 <input
-                    type="number"
-                    name='age'
-                    placeholder='enter your age'
+                    type="email"
+                    name='email'
+                    placeholder='enter your Email'
                     required
                 />
                 <br />
                 <select name="genres">
                     <option value="" disabled selected>
-                        chosqe your genre
+                        choose your genre
                     </option>
                     <option value="male">male</option>
                     <option value="female">female</option>
@@ -78,6 +79,13 @@ function UserForm() {
                     type="file"
                     name='image'
                     placeholder='file'
+                />
+                <br />
+                <input
+                    type="password"
+                    name='password'
+                    placeholder='enter your password'
+                    required
                 />
                 <br />
                 <button className='w-7 h-3 text-black border-black'>save</button>

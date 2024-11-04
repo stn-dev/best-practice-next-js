@@ -1,0 +1,82 @@
+%flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  $dark : rgb(0, 0, 23);
+
+.container {
+    width: 60%;
+    min-height: 400px;
+    color: white;
+    background-color: $dark;
+    @extend %flex;
+    padding: 30px;
+    background-image: linear-gradient(rgb(194, 194, 255),rgb(0, 0, 170));
+    position: relative;
+
+    .formUser {
+      width: fit-content;
+      height: fit-content;
+      padding: 20px;
+      @extend %flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: $dark;;
+
+      input {
+        width: min(30vw , 350px);
+        height: 50px;
+        outline: none;
+        border: 2px solid blue;
+        background-color: $dark;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: normal;
+        color: rgb(219, 219, 255);
+        transition: all 0.2s;
+
+        &::placeholder {
+          color: rgba(0, 0, 255, 0.651);
+          font-size: 16px;
+        }
+
+        &:focus {
+          box-shadow: 0 0 10px 8px rgba(0, 0, 255, 0.438);
+        }
+      }
+
+      select {
+        width: min(30vw , 350px);
+        height: 50px;
+        outline: none;
+        border: 2px solid blue;
+        background-color: $dark;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: normal;
+        color: rgb(219, 219, 255);
+        appearance: none;
+
+        &:focus {
+          box-shadow: 0 0 10px 8px rgba(0, 0, 255, 0.438);
+        }
+      }
+
+      button {
+        width: min(30vw , 350px);
+        min-height: 50px;
+        background-color: blue;
+        color: white;
+        font-size: 16px;
+        font-weight: normal;
+        padding: 16px 32px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background-color: rgb(0, 0, 190);
+        }
+      }
+    }
+}

@@ -55,11 +55,17 @@ body {
     padding: 0  50px; 
     @extend %flex;
     justify-content: flex-end;
-    gap: 20px;
+    gap: 30px;
 
-    &:nth-child(1) {
-      background-color: transparent;
-      border: 2px solid blue;
+    .button-container {
+      @extend %flex;
+      gap: 20px;
+    }
+
+    .log-out-btn{
+      background-color: rgb(255, 69, 69);
+      border:none;
+      color: white;
     }
 
     button {
