@@ -67,12 +67,10 @@ export const POST = async (req : Request) => {
 
         if(aleadyExist) {
 
-            alert("This eamil already exist\n please use another one")
-
             return NextResponse.json(
                 {
                     ok : false , 
-                    message : "This eamil aleady exist, please use another one"
+                    message : "This email already exist, please use another one"
                 } ,
                 {status : 400}
             )

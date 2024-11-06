@@ -5,7 +5,7 @@ import style from './loginFrom.module.scss'
 import { useRouter } from 'next/navigation'
 
 
-function LoginForm() {
+const LoginForm = () => {
 
     const [btnText, setBtnText] = useState("submit")
     const [disable, setDisable] = useState(false)

@@ -1,4 +1,4 @@
-import { deleteUser, getOneUserByEmail, updateUser } from '@/db/User/userSevice';
+import { deleteUser, getOneUser, getOneUserByEmail, updateUser } from '@/db/User/userSevice';
 import { NextResponse } from 'next/server';
 
 type IdType = {
@@ -77,6 +77,52 @@ export const PUT = async (req : Request , {params} : IdType) => {
             {
                 ok : true,
                 message : "user updated sucsessfully"
+            },
+            {status : 200}
+        )
+        
+    } catch (error) {
+        return NextResponse.json(
+            { 
+                message : "server error! " + error,
+                ok : false
+            },
+            {status : 500}
+        )
+    }
+}
+
+export const GET = async (req : Request , {params} : IdType)  => {
+
+    if(!process.env.MONGODB_URI) {
+        return NextResponse.json(
+            { 
+                message : "server not found",
+                ok : false
+            },
+            {status : 500}
+        )
+    }
+
+    try {
+
+        const data = await getOneUser(params.id)
+
+        if(!data) {
+            return NextResponse.json(
+                {
+                     message : "any user found!",
+                     ok : false
+                },
+                {status : 404}
+            )
+        }
+
+        return NextResponse.json(
+            {
+                ok : true,
+                message : "user updated",
+                data
             },
             {status : 200}
         )

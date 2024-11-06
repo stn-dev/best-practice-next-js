@@ -3,6 +3,7 @@ import style from './uniqueUser.module.scss'
 import { getOneUser } from '@/db/User/userSevice'
 import DeleteUserBtn from '@/app/components/(BUTTON)/Button/DeleteUserBtn/DeleteUserBtn'
 import GoBack from '@/app/components/goBack/goBack'
+import GoToUpdate from '@/app/components/(BUTTON)/Button/goToUpdateUser/GoToUpdate'
 
 type userId = {
     params: { id: string }
@@ -25,13 +26,13 @@ const uniqueUser = async ({ params }: userId) => {
                 <div className={style.userInfos} >
 
                     <h1>{user?.name}</h1>
-                    <p>age : <span> {user?.age} </span></p>
+                    <p>Email : <span> {user?.email} </span></p>
                     <p>genres : <span> {user?.genres} </span></p>
 
                     <div className={style.btnContainer} >
 
                         <DeleteUserBtn params={params} />
-                        <button className={style.updateBtn}>UPDATE</button>
+                        <GoToUpdate className={style.updateBtn} id={params.id} />
 
                     </div>
 

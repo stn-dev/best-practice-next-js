@@ -31,14 +31,15 @@ function UserForm() {
                 body: JSON.stringify({ name, email, genres, file, password })
             }
             )
+            const data = await res.json()
 
-            if (res.ok) {
-                alert("user posted")
+            if (data.ok) {
+                alert("you are registred, try to logi now")
 
                 router.refresh()
-                router.push("/user")
+                router.push("/login")
             } else {
-                alert("error when post user")
+                alert(data.message)
             }
 
         } catch (error) {
