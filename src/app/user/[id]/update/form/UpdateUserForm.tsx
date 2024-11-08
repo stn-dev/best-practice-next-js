@@ -13,21 +13,6 @@ type IdType = {
 type Genres = "male" | "female"
 
 
-
-// const getUser = async (id: string) => {
-
-//     try {
-//         const user = await fetch(`http://localhost:3000/api/user/${id}`)
-//         const data = await user.json()
-
-//         return data
-
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
-
-
 function UpdateUserForm({ params }: IdType) {
 
     const router = useRouter()
@@ -99,19 +84,10 @@ function UpdateUserForm({ params }: IdType) {
                 router.refresh()
             } else {
                 alert(data.message)
+                setBtnText("save")
+                setDisable(false)
+                return
             }
-
-
-
-            // const res = await updateUser(name as string, email as string, genres as Genres, image as File, password as string, params.id)
-
-            // if (res.matchedCount !== 0) {
-            //     revalidatePath("/user")
-            //     redirect("/user")
-            // } else {
-            //     console.log('error occured')
-            // }
-
 
         } catch (error) {
             setBtnText("save")

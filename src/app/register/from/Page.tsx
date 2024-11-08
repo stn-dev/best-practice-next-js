@@ -3,6 +3,8 @@
 import React from 'react'
 import style from './userForm.module.scss'
 import { useRouter } from 'next/navigation'
+import UploadFiile from '@/app/components/UploadFile/UploadFiile'
+import { v4 as uuidv4 } from 'uuid'
 
 function UserForm() {
 
@@ -17,23 +19,39 @@ function UserForm() {
         const name = formData.get('name')
         const email = formData.get("email")
         const genres = formData.get("genres")
-        const file = formData.get('image')
+        const file = formData.get('image') as File
         const password = formData.get('password')
 
-        console.log(file)
+        formData.append('file', file)
+
+        const myFileName = `${uuidv4()}_${file.name}`
+
 
         try {
-            const res = await fetch("http://localhost:3000/api/user", {
+
+            const imageRes = await fetch(`http://localhost:3000/api/user/uploadImage?fileName=${myFileName}`, {
+                next: {
+                    revalidate: 0
+                },
+                method: "POST",
+                body: formData
+            })
+
+            const result = await imageRes.json()
+
+
+
+            const res = await fetch("http://localhost:3000/api/user?filename=1235464aabbc12354-js.png", {
                 method: "POST",
                 headers: {
                     "content-Type": "application/json"
                 },
-                body: JSON.stringify({ name, email, genres, file, password })
+                body: JSON.stringify({ name, email, genres, image: myFileName, password })
             }
             )
             const data = await res.json()
 
-            if (data.ok) {
+            if (data.ok && result.ok) {
                 alert("you are registred, try to logi now")
 
                 router.refresh()
@@ -54,6 +72,9 @@ function UserForm() {
                 onSubmit={postUser}
                 className={style.formUser}
             >
+
+                <UploadFiile />
+
                 <input
                     type="text"
                     name='name'
@@ -69,18 +90,12 @@ function UserForm() {
                 />
                 <br />
                 <select name="genres">
-                    <option value="" disabled selected>
+                    <option defaultValue="" >
                         choose your genre
                     </option>
                     <option value="male">male</option>
                     <option value="female">female</option>
                 </select>
-                <br />
-                <input
-                    type="file"
-                    name='image'
-                    placeholder='file'
-                />
                 <br />
                 <input
                     type="password"

@@ -9,7 +9,7 @@ export interface IUserType {
     name : string,
     email : string,
     genres : "male" | "female",
-    image ? : File | null,
+    image : string,
     _id? : ObjectId,
     password : number | string
 }

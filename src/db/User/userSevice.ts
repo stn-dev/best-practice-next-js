@@ -25,7 +25,7 @@ export const getOneUser = async (id : string) => {
     return user
 }
 
-export const createUser = async (name : string , email : string , genres : "male" | "female" , image : File , password : number | string) => {
+export const createUser = async (name : string , email : string , genres : "male" | "female" , image : string , password : number | string) => {
     const myDb = await mongoClient
 
     const newUser = myDb
@@ -35,14 +35,14 @@ export const createUser = async (name : string , email : string , genres : "male
         name,
         email,
         genres,
-        image : image || null,
+        image ,
         password
     })
 
     return newUser
 }
 
-export const updateUser = async (name : string , email : string , genres : "male" | "female" , image : File | null , password : number | string, id : string) => {
+export const updateUser = async (name : string , email : string , genres : "male" | "female" , image : string, password : number | string, id : string) => {
     const myDb = await mongoClient
 
     const userToUpdate = myDb
@@ -52,7 +52,7 @@ export const updateUser = async (name : string , email : string , genres : "male
         {_id : new ObjectId(id)},
         {
             $set : {
-                name, email, genres, image : image || null, password
+                name, email, genres, image , password
             }
         }
     )

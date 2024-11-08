@@ -3,6 +3,7 @@ import style from './user.module.scss'
 import { IUserType } from '@/db/Types/type'
 import TransitionLink from '../components/link/transitionLink'
 import { revalidatePath } from 'next/cache'
+import fs from 'fs/promises'
 
 export const getAllUser = async (): Promise<IUserType[] | undefined> => {
 
@@ -28,6 +29,7 @@ const page = async () => {
 
     const users = await getAllUser()
 
+
     return (
         <>
             <div className={style.container} >
@@ -41,7 +43,7 @@ const page = async () => {
                         users?.map((user, id) => (
                             <div className={style.user} key={id}>
 
-                                <img src="" alt="user pic" />
+                                <img src={`/uploads/${user.image}`} alt="user pic" />
 
                                 <h2>{user.name}</h2>
 

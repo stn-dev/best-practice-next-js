@@ -1,4 +1,5 @@
 import { deleteUser, getOneUser, getOneUserByEmail, updateUser } from '@/db/User/userSevice';
+import { ObjectId } from 'mongodb';
 import { NextResponse } from 'next/server';
 
 type IdType = {
@@ -58,14 +59,17 @@ export const PUT = async (req : Request , {params} : IdType) => {
 
         const aleadyExist = await getOneUserByEmail(email)
 
-        if(aleadyExist) {
+        console.log(aleadyExist)
+        console.log(params.id)
 
-            alert("This eamil already exist\n please use another one or your last email")
+        if(aleadyExist && (new ObjectId(params.id) != aleadyExist._id)) {
+
+            console.log("This email already exist\n please use another one or your last email")
 
             return NextResponse.json(
                 {
                     ok : false , 
-                    message : "This eamil aleady exist, please use another one"
+                    message : "This email aleady exist, please use another one"
                 } ,
                 {status : 400}
             )

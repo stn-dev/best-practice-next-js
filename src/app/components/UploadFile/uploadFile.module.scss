@@ -1,0 +1,28 @@
+%flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  $dark : rgb(0, 0, 23);
+
+  .container {
+    width: 150px;
+    height: 150px;
+    @extend %flex;
+    margin-bottom: 20px;
+
+    img {
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+        border: 2px solid white;
+        background-color: rgb(216, 216, 255);
+
+        &:hover {
+            cursor: pointer;
+        }
+    
+    }
+  }
+

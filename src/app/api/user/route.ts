@@ -4,6 +4,7 @@ import { NextResponse } from "next/server"
 
 export const GET = async (req : Request)  => {
 
+
     if(!process.env.MONGODB_URI) {
         return NextResponse.json(
             { 

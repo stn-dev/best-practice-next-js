@@ -21,7 +21,7 @@ const uniqueUser = async ({ params }: userId) => {
 
             <div className={style.user} >
 
-                <img src="" alt="user picture" />
+                <img src={`/uploads/${user?.image}`} alt="user picture" />
 
                 <div className={style.userInfos} >
 
