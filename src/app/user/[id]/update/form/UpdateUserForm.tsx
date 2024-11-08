@@ -38,14 +38,14 @@ function UpdateUserForm({ params }: IdType) {
 
     useEffect(() => {
 
-        const getUser = async (id: string) => {
+        const getUser = async () => {
 
             try {
-                const user = await fetch(`http://localhost:3000/api/user/${id}`)
+                const user = await fetch(`http://localhost:3000/api/user/${params.id}`)
                 const datas = await user.json()
 
                 console.log('this the data content')
-                console.log(datas.data)
+                console.log(datas)
 
                 setUser(datas.data)
 
@@ -56,7 +56,7 @@ function UpdateUserForm({ params }: IdType) {
             }
         }
 
-        getUser
+        getUser()
 
     }, [])
 

@@ -15,7 +15,7 @@ export const middleware = (req) => {
     // if (!publicPath && !token) {
     //     NextResponse.redirect(new URL('/login', req.nextUrl))
     // }
-    console.log("log from middleware")
+    // console.log("log from middleware")
 }
 
 export const confid = {
